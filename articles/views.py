@@ -2,6 +2,18 @@ from django.shortcuts import render
 from .models import Article
 # Create your views here.
 
+
+def create_article(request):
+    # print(request.POST)
+    context = {}
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        article_obj = Article.objects.create(title=title,content=content)
+        context['object'] = article_obj
+        context['created'] = True
+    return render(request,"articles/create.html",context=context)
+
 def article_search(request):
     print(request.GET)
     query_dict = request.GET #dictionary of query and value, article_id
