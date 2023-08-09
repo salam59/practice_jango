@@ -8,11 +8,11 @@
 
 <h1>{{title}} {{id}}</h1>
 <p>{{content}} {{id}}</p>
-
+<h2> Article list:</h2>
 <ul>
     {% for x in object_list %}
         {% if x.content %}
-            <li><a href="articles/{{x.id}}">{{x}}</a></li>
+            <li><a href="articles/{{x.id}}">{{x.title}}-->{{x.content}}</a></li>
         {% endif %}
     {% endfor %}
 </ul>
