@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from .views import home_view
-
+from articles import views
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("articles/",include('articles.urls')), #dynamic url routing
+    path("articles/",views.article_search),
+    path("articles/<int:id>",views.article_details_view), #dynamic url routing
     path("",home_view),
 ]

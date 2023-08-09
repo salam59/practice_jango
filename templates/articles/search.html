@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Articles</title>
+{% endblock %}
+{% block content  %}
+    <h1>{{article_data.title}} {{article_data.id}}</h1>
+    <p>{{article.content}}</p>
+{% endblock  %}
