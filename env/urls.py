@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from accounts.views import login_view
-from .views import home_view
+from accounts.views import (
+    login_view,
+    logout_view
+)
+from .views import (
+    home_view
+)
 from articles.views import(
     article_search,
     create_article,
@@ -31,5 +36,6 @@ urlpatterns = [
     path("articles/create",create_article),
     path("articles/<int:id>",article_details_view), #dynamic url routing
     path("",home_view),
-    path("login/",login_view)
+    path("login/",login_view),
+    path("logout/",logout_view)
 ]

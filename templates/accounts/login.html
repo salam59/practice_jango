@@ -4,9 +4,12 @@
 {% endblock %}
 {% block content  %}
     
-        
+        {% if request.user.is_authenticated %}
+            <p><strong>You are already logged in!!</p>
+            <p>Would you like to <a href="/logout">logout</a>??</p>
+        {% else %}
         <div style="margin-top: 20px;">
-            <form action="" method="POST">{% csrf_token %}
+            <form method="POST">{% csrf_token %}
                 <div style="margin-top: 20px;">
                     <input type="text" name="username"><br></div>
                 <div style="margin-top: 20px;">
@@ -21,6 +24,8 @@
     
             </form>
         </div>
+        {% endif %}
+        
    
     
     
