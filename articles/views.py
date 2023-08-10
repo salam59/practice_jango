@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import Article
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required
 def create_article(request):
     # print(request.POST)
     context = {}
@@ -14,6 +15,7 @@ def create_article(request):
         context['created'] = True
     return render(request,"articles/create.html",context=context)
 
+@login_required
 def article_search(request):
     print(request.GET)
     query_dict = request.GET #dictionary of query and value, article_id
@@ -35,6 +37,7 @@ def article_search(request):
     }
     return render(request,'articles/search.html',context)
 
+@login_required
 def article_details_view(request,id=None):
     article = None
     if id is not None:
