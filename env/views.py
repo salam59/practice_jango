@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 import random
 from articles.models import Article
+from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string,get_template
 #use get_template when u have multiple contexts otherwise use render_to_string
+
+@login_required
 def home_view(request):
     """
     Take in a request (Django sends requests)
