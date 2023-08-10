@@ -19,7 +19,8 @@ from django.urls import path
 
 from accounts.views import (
     login_view,
-    logout_view
+    logout_view,
+    register_view
 )
 from .views import (
     home_view
@@ -37,5 +38,6 @@ urlpatterns = [
     path("articles/<int:id>",article_details_view), #dynamic url routing
     path("",home_view),
     path("login/",login_view),
-    path("logout/",logout_view)
+    path("logout/",logout_view),
+    path("register/",register_view)
 ]

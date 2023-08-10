@@ -4,15 +4,12 @@
 {% endblock %}
 {% block content  %}
     {% if not created %}
+    {% comment %} {{form.as_p}} {% endcomment %}
         <h2>Create Article</h2>
         <div style="margin-top: 20px;">
             <form action="" method="POST">
                 {% csrf_token %}
-                <div style="margin-top: 20px;">
-                    <input type="text" name="title"><br></div>
-                <div style="margin-top: 20px;">
-                    <textarea name="content"></textarea><br>
-                </div>
+               {{form.as_p}}
                 <div style="margin-top: 20px;">
                     <button type="submit">create article</button>
                 </div>
