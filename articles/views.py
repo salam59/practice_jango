@@ -22,34 +22,21 @@ def create_article(request):
 
 @login_required
 def article_search(request):
-    print(request.GET)
+    # print(request.GET)
     query_dict = request.GET #dictionary of query and value, article_id
-
-    try:
-        query = int(query_dict.get("query"))
-    except:
-        query = None
-    article_obj = None
-
-    if query is not None:
-        try:
-            article_obj = Article.objects.get(id=query)
-        except:
-            article_obj = None
-    # print(article_obj)
+    query = query_dict.get("query")
+    article_obj = Article.objects.search(query)
     context = {
         "article_data": article_obj
     }
     return render(request,'articles/search.html',context)
 
 @login_required
-def article_details_view(request,id=None):
+def article_details_view(request,slug=None):
     article = None
-    if id is not None:
-        article = Article.objects.get(id=id)
+    if slug is not None:
+        article = Article.objects.get(slug=slug)
     context = {
-        "title": article.title,
-        "id" : article.id,
-        "content": article.content
+        "article":article
     }
     return render(request,"articles/details.html",context=context)

@@ -35,7 +35,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("articles/",article_search),
     path("articles/create",create_article),
-    path("articles/<int:id>",article_details_view), #dynamic url routing
+    path("articles/<slug:slug>",article_details_view), #dynamic url routing
     path("",home_view),
     path("login/",login_view),
     path("logout/",logout_view),
